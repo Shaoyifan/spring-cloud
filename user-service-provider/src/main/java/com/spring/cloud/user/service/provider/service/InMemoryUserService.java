@@ -27,6 +27,6 @@ public class InMemoryUserService implements UserService {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList(repository.values());
+        return new ArrayList<>(repository.values());
     }
 }
