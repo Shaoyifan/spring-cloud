@@ -6,6 +6,7 @@ import com.spring.cloud.api.UserService;
 import com.spring.cloud.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,10 @@ import java.util.Random;
  */
 @RestController
 public class UserServiceProviderController implements UserService {
+
+
+    @Value("${server.port}")
+    private int port;
 
     @Autowired
     @Qualifier("inMemoryUserService") // 实现 Bean ： InMemoryUserService
@@ -81,6 +86,12 @@ public class UserServiceProviderController implements UserService {
      */
     public List<User> fallbackForGetUsers() {
         return Collections.emptyList();
+    }
+
+
+    @GetMapping("/hello")
+    public String sayHello(){
+        return "hello，我的端口是:"+port;
     }
 
 }

@@ -14,29 +14,23 @@ var server = http.createServer(function (req, res) {
     else if (pathname === '/health') {
         res.end(JSON.stringify({"status": "UP"}));
     } else if (pathname === '/hi') {
-        console.log('=============== ');
-        //////////////////////请求后端开始//////////////////////////
         var options = {
             host: 'localhost',
-            port: 8000,
-            path: '/user-service-provider/info',
+            port: 8077,
+            path: '/user-service-provider/hello',
             method: 'GET',
             headers: {
                 'accept': '*/*',
-                'content-type': "application/atom+xml"
+                'content-type': "application/json"
             }
         };
         var req = http.request(options, function (res) {
-            console.log('STATUS: ' + res.statusCode);
-            console.log('HEADERS: ' + JSON.stringify(res.headers));
             res.on('data', function (data) {
-                console.log('BODY: ' + data);
+                console.log('请求成功: ' + data);
             });
-
         });
         req.end();
         res.end("SUCCESS");
-        //////////////////////请求后端结束//////////////////////////
     }
 
     // 其他情况返回404

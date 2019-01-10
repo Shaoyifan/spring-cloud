@@ -56,5 +56,8 @@ public class UserRibbonController {
 
     }
 
-
+    @GetMapping("/sidecar")
+    public String sidecar() {
+        return restTemplate.getForObject("http://sidecar-server/hi", String.class);
+    }
 }

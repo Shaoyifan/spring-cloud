@@ -33,7 +33,7 @@ public class MyPing implements IPing {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity responseEntity = restTemplate.getForEntity(uri, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
         // 当响应状态等于 200 时，返回 true ，否则 false
         return HttpStatus.OK.equals(responseEntity.getStatusCode());
     }
