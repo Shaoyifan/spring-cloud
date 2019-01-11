@@ -37,7 +37,7 @@ public class UserRibbonController {
 
         User user = new User();
         user.setId(1L);
-        user.setName("xiao");
+        user.setName("sangfor");
 
         // 选择指定的 service Id
         ServiceInstance serviceInstance = loadBalancerClient.choose(providerServiceName);
